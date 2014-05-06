@@ -7,6 +7,13 @@ max-codes: 2
 #Formatting codes that cannot be used
 illegal-codes:
     - '0'
+    - '8'
+    - 'k'
+    - 'l'
+    - 'm'
+    - 'n'
+    - 'o'
+    - 'r'
 
 #Messages the plugin gives to players
 msg:
@@ -14,3 +21,10 @@ msg:
     invalid-name: "Your nickname must be the same as your username (case-sensitive)!"
     illegal-code: "Your nickname contains a format code that is not allowed (see /colors)!"
 
+#Values for the book that shows available format codes
+book:
+    author: "&6ZColor"
+    title: "Usable Nickname Colors"
+
+#Number of seconds required between usages of the nick color command
+cooldown: 3600

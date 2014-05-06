@@ -1,9 +1,12 @@
 package me.hauno.bukkit.zcolor;
 
 import com.earth2me.essentials.Essentials;
+import me.hauno.bukkit.zcolor.command.ColorbookCommand;
 import me.hauno.bukkit.zcolor.command.NickColorCommand;
 import net.lordsofcode.framework.CommandFramework;
 import org.bukkit.ChatColor;
+import org.bukkit.permissions.Permission;
+import org.bukkit.permissions.PermissionDefault;
 
 import java.util.logging.Logger;
 
@@ -24,6 +27,8 @@ public class ZColor {
         this.checkEssentials();
         this.registerCommands();
         this.plugin.saveDefaultConfig();
+
+        this.plugin.getServer().getPluginManager().addPermission(new Permission("zcolor.bypass", PermissionDefault.OP));
     }
 
     public void shutdown() {
@@ -32,6 +37,7 @@ public class ZColor {
 
     private void registerCommands() {
         this.commandFramework.registerCommands(new NickColorCommand());
+        this.commandFramework.registerCommands(new ColorbookCommand());
         this.commandFramework.registerHelp();
     }
 
