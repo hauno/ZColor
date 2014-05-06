@@ -1,0 +1,16 @@
+#Prefix for plugin messages in the in-game chat
+prefix: "&4[&6ZColor&4]:&r"
+
+#Maximum number of formatting codes that can be used in the nickname
+max-codes: 2
+
+#Formatting codes that cannot be used
+illegal-codes:
+    - '0'
+
+#Messages the plugin gives to players
+msg:
+    code-limit: "Names must only contain &42&r formatting codes!"
+    invalid-name: "Your nickname must be the same as your username (case-sensitive)!"
+    illegal-code: "Your nickname contains a format code that is not allowed (see /colors)!"
+
