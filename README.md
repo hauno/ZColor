@@ -21,8 +21,20 @@ Using
 * Try it! (/nickcolor)
 
 
+Commands & Permissions
+======
+* /nickcolor (aliases /color and /nc)
+    * Requires `zcolor.use`
+    * Allows players to change the formatting of their chat names.
+* /colorbook (alias /cb)
+    * Requires `zcolor.book`
+    * Gives the player a written book containing a list of color codes that are allowed.
+
 Building
 =======
 1. Install [Maven 3](http://maven.apache.org/)
 2. Run `mvn clean package` in the project directory.
 3. You can find the compiled plugin in the `target` directory.
+
+
+**Originally written for [OP Factions](http://op-factions.org)**
