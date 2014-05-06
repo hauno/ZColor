@@ -73,7 +73,7 @@ public class NickColorCommand {
         Player player = args.getPlayer();
         Essentials essentials = ZColor.getInstance().getEssentials();
 
-        if (CommandUtil.isOnCooldown(player) && !player.hasPermission("zcolor.bypass")) {
+        if (CommandUtil.isOnNickCooldown(player) && !player.hasPermission("zcolor.bypass")) {
             player.sendMessage(ZColor.getInstance().formatPluginMessage("You cannot change your nickname again so soon!"));
             return;
         }
@@ -84,7 +84,7 @@ public class NickColorCommand {
             user.setNickname(nickName);
             user.setDisplayNick();
             CommandUtil.removeFromConfirming(player);
-            CommandUtil.startCooldown(player);
+            CommandUtil.startNickCooldown(player);
             player.sendMessage(ZColor.getInstance().formatPluginMessage("Your nickname has been changed."));
         } catch (ZColorException e) {
             //Ignore, player wasn't confirming.

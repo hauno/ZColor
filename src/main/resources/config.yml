@@ -28,3 +28,6 @@ book:
 
 #Number of seconds required between usages of the nick color command
 cooldown: 3600
+
+#Number of seconds required between usages of the color book command
+book-cooldown: 300

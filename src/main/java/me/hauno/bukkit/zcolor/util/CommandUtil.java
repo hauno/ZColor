@@ -10,7 +10,8 @@ import java.util.UUID;
 public class CommandUtil {
 
     private static HashMap<UUID, String> confirmingPlayers = new HashMap<UUID, String>();
-    private static HashMap<UUID, Integer> onCooldown = new HashMap<UUID, Integer>();
+    private static HashMap<UUID, Integer> nickCooldown = new HashMap<UUID, Integer>();
+    private static HashMap<UUID, Integer> bookCooldown = new HashMap<UUID, Integer>();
 
     public static void addToConfirming(Player player, String nickname) {
         confirmingPlayers.put(player.getUniqueId(), nickname);
@@ -28,12 +29,16 @@ public class CommandUtil {
         confirmingPlayers.remove(player.getUniqueId());
     }
 
-    public static void startCooldown(Player player) {
-        onCooldown.put(player.getUniqueId(), (int)(System.currentTimeMillis() / 1000));
+    public static void startNickCooldown(Player player) {
+        nickCooldown.put(player.getUniqueId(), (int) (System.currentTimeMillis() / 1000));
     }
 
-    public static boolean isOnCooldown(Player player) {
-        Integer startTime = onCooldown.get(player.getUniqueId());
+    public static void startBookCooldown(Player player) {
+        bookCooldown.put(player.getUniqueId(), (int) (System.currentTimeMillis() / 1000));
+    }
+
+    public static boolean isOnNickCooldown(Player player) {
+        Integer startTime = nickCooldown.get(player.getUniqueId());
         int currentTime = (int)(System.currentTimeMillis() / 1000);
 
         if (startTime == null) return false;
@@ -45,7 +50,24 @@ public class CommandUtil {
         return false;
     }
 
-    public static void removeCooldown(Player player) {
-        onCooldown.remove(player.getUniqueId());
+    public static boolean isOnBookCooldown(Player player) {
+        Integer startTime = bookCooldown.get(player.getUniqueId());
+        int currentTime = (int)(System.currentTimeMillis() / 1000);
+
+        if (startTime == null) return false;
+
+        if (currentTime - startTime <= ZColor.getInstance().getPlugin().getConfig().getInt("book-cooldown")) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public static void removeNickCooldown(Player player) {
+        nickCooldown.remove(player.getUniqueId());
+    }
+
+    public static void removeBookCooldown(Player player) {
+        bookCooldown.remove(player.getUniqueId());
     }
 }

@@ -1,6 +1,7 @@
 package me.hauno.bukkit.zcolor.command;
 
 import me.hauno.bukkit.zcolor.ZColor;
+import me.hauno.bukkit.zcolor.util.CommandUtil;
 import net.lordsofcode.framework.Command;
 import net.lordsofcode.framework.CommandArgs;
 import org.bukkit.ChatColor;
@@ -21,6 +22,11 @@ public class ColorbookCommand {
 
         Player player = args.getPlayer();
         FileConfiguration config = ZColor.getInstance().getPlugin().getConfig();
+
+        if (CommandUtil.isOnBookCooldown(player) && !player.hasPermission("zcolor.bypass")) {
+            player.sendMessage(ZColor.getInstance().formatPluginMessage("You cannot obtain a color book again so soon!"));
+            return;
+        }
 
         List<String> illegalCodes = config.getStringList("illegal-codes");
 
@@ -50,6 +56,8 @@ public class ColorbookCommand {
         book.setItemMeta(bookMeta);
 
         player.getInventory().addItem(book);
+
+        CommandUtil.startBookCooldown(player);
     }
 
 }
