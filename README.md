@@ -29,6 +29,7 @@ Commands & Permissions
 * /colorbook (alias /cb)
     * Requires `zcolor.book`
     * Gives the player a written book containing a list of color codes that are allowed.
+* The `zcolor.bypass` permission will allow a player to ignore the cooldown set in the configuration.
 
 Building
 =======
