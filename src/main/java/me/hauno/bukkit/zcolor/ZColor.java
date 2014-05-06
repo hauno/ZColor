@@ -3,6 +3,7 @@ package me.hauno.bukkit.zcolor;
 import com.earth2me.essentials.Essentials;
 import me.hauno.bukkit.zcolor.command.ColorbookCommand;
 import me.hauno.bukkit.zcolor.command.NickColorCommand;
+import me.hauno.bukkit.zcolor.command.ZColorCommand;
 import net.lordsofcode.framework.CommandFramework;
 import org.bukkit.ChatColor;
 import org.bukkit.permissions.Permission;
@@ -38,6 +39,7 @@ public class ZColor {
     private void registerCommands() {
         this.commandFramework.registerCommands(new NickColorCommand());
         this.commandFramework.registerCommands(new ColorbookCommand());
+        this.commandFramework.registerCommands(new ZColorCommand());
         this.commandFramework.registerHelp();
     }
 
